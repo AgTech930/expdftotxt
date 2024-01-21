@@ -1,6 +1,4 @@
-from langchain.chains import LLMChain
-from langchain.llms import openai
-from langchain.prompts import PromptTemplate
+from openai import OpenAI
 import base64
 import pytesseract  
 from pdf2image import convert_from_bytes
@@ -64,7 +62,7 @@ class InvoiceExtractor(OpenAiCredential):
         }
         return document
 
-    def _template(self,template=""):
+    def _template(self,template="",pages=""):
         """
         Generate a template string for document extraction.
 
@@ -76,9 +74,9 @@ class InvoiceExtractor(OpenAiCredential):
 
         """
         if template:
-            template = template+""", invoice number """+""" in {pages} and i don't want code """
+            template = template+""", invoice number """+f""" in {pages} and i don't want code """
         else:
-            template = """
+            template = f"""
                         Extract invoice number, company name , bill from organization, bill from address, bill to , bill to address, date, item name, item quantity, unit price , total price in {pages} and i don't want code
                     """
         return template
@@ -94,6 +92,7 @@ class InvoiceExtractor(OpenAiCredential):
         dict or list: If successful, a dictionary containing key-value pairs extracted from the data.
                     If an error occurs during the formatting process, the original data is returned in list.
         """
+        
         data = data.split('\n')
         try:
             invoice_dict = {}
@@ -121,15 +120,15 @@ class InvoiceExtractor(OpenAiCredential):
                     If an error occurs during the extraction process, the exception message is printed and logged.
         """
         try:
+            client = OpenAI(api_key=api_key if api_key else self.api_key)
             temperature = temperature if temperature else self.temperature
-            api_key = api_key if api_key else self.api_key
-            llm = openai.OpenAI(temperature=temperature,api_key=api_key)
             document = self.extract_document()
-            template = self._template(template)
-            prompt_template = PromptTemplate(input_variables=["pages"],template=template)
-            ner_chain = LLMChain(llm=llm,prompt=prompt_template)
-            result = ner_chain.run(pages=document)
-            final_data = self.data_format(result) if format_data else result
+            template = self._template(template,document)
+            max_tokens = 3000
+            response = client.completions.create(model="gpt-3.5-turbo-instruct",  # You can choose a different engine
+                                                prompt=template,
+                                                max_tokens=max_tokens)
+            final_data = self.data_format(response.choices[0].text) if format_data else response.choices[0].text
             return final_data
         except ValueError as e:
             print(e)
