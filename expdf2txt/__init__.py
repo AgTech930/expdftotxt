@@ -1,4 +1,4 @@
 from . import base
-from . import invoice2text
-from . import pdf2text
+from . import invoice2data
+from . import pdf2data
 from . import openaiCredential
