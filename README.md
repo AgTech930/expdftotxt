@@ -12,7 +12,7 @@ This package empowers users with a straightforward and reliable method to extrac
 
 ### Code: 
 ```python
-from expdf2txt.invoice2text import InvoiceExtractor
+from expdf2txt.invoice2data import InvoiceExtractor
 FILEPATH = "invoice_2001321.pdf"
 invocie_extractor = InvoiceExtractor(FILEPATH)
 data = invocie_extractor.openai_extract_data(format_data=True)
