@@ -11,13 +11,13 @@ This package empowers users with a straightforward and reliable method to extrac
 ## 1. InvoiceExtractor (Convert Invoice Pdf to Text)
 
 ### Code: 
-        ```python
+```python
         from expdf2txt.invoice2text import InvoiceExtractor
         FILEPATH = "invoice_2001321.pdf"
         invocie_extractor = InvoiceExtractor(FILEPATH)
         data = invocie_extractor.openai_extract_data(format_data=True)
         print(data)
-        ```
+```
 
 ## 2. ImageExtractor (extract image from pdf)
 
@@ -30,7 +30,6 @@ This package empowers users with a straightforward and reliable method to extrac
 ```
 
 
-# New Features Comming Soon...
 
 
 # 🚀 Methods
@@ -53,10 +52,10 @@ This package empowers users with a straightforward and reliable method to extrac
 
 # Dependencies
 
-**openai**
-**pytesseract**
-**PyPDF2**
-**PyMuPDF**
+-**openai**
+-**pytesseract**
+-**PyPDF2**
+-**PyMuPDF**
 
 # License
 
