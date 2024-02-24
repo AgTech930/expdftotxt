@@ -52,10 +52,10 @@ This package empowers users with a straightforward and reliable method to extrac
 
 # Dependencies
 
-**openai**
-**pytesseract**
-**PyPDF2**
-**PyMuPDF**
+- **openai**,
+- **pytesseract**,
+- **PyPDF2**,
+- **PyMuPDF**,
 
 # License
 
