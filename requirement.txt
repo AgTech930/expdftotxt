@@ -1,0 +1,4 @@
+openai
+pytesseract
+PyPDF2
+PyMuPDF
