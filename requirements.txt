@@ -1,6 +1,0 @@
-pytesseract
-pdf2image
-openai
-PyMuPDF
-Pillow
-PyPDF2

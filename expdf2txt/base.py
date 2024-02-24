@@ -10,11 +10,26 @@ class Base:
         self.filePath = pdfFile
     
     def decode(self,binary_data):
+        """
+        Decode binary data using base64.
+
+        Parameters:
+        - binary_data (bytes): Binary data to be decoded.
+
+        Returns:
+        bytes: Decoded binary data.
+        """
         encoded_data = base64.b64encode(binary_data)
         base_data = base64.b64decode(encoded_data)
         return base_data
 
     def decode_file(self):
+        """
+        Read binary data from a file and decode it using base64.
+
+        Returns:
+        bytes: Decoded binary data.
+        """
         with open(self.filePath, 'rb') as file:
             binary_data = file.read()
             base_data = self.decode(binary_data)
@@ -25,6 +40,13 @@ class Base:
         return len(pdf.pages)
 
     def extract_document(self):
+        """
+        Extract text content from a document file, such as a PDF.
+
+        Returns:
+        dict: A dictionary containing extracted information.
+
+        """
         isBytes = type(self.filePath) is bytes
         base_data = self.filePath
         if not isBytes:

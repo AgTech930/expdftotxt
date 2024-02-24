@@ -2,20 +2,47 @@ from .base import Base
 import fitz
 import os
 
-class PDFExtractor:
-    def __init__(self,pdf_data):
-        self.base = Base(pdf_data)
-        self.pdf_data = pdf_data
+class PDFExtractor(Base):
+    def __init__(self,pdfFile):
+        self.pdfFile = pdfFile
+        return super().__init__(pdfFile=pdfFile)
     
     def countpages(self):
-        return self.base.countpages()
+        """
+        Count the number of pages in the document.
 
-    def extract(self):
-        extracted_data = self.base.extract_string()
-        return extracted_data
+        This method returns the total number of pages in the document.
+
+        Returns:
+            int: The number of pages in the document.
+        """
+        return super().countpages()
+
+    def extract_string(self):
+        """
+        Extract the data from the source.
+
+        This method retrieves the data from the source data. The specific behavior
+        of extraction might depend on the implementation in the subclass.
+
+        Returns:
+            str: The extracted string.
+        """
+        return super().extract_string()
 
     def extract_image(self):
-        pdf_file = fitz.open(self.pdf_data)
+        """
+        Extract images from the PDF document.
+
+        This method extracts images from each page of the PDF document and saves them as separate files.
+        
+        Raises:
+            ValueError: If no images are found in the PDF document.
+
+        Returns:
+            bool: True if images are extracted successfully.
+        """
+        pdf_file = fitz.open(self.pdfFile)
         page_nums = self.countpages()
         img_list = []
 
@@ -24,7 +51,7 @@ class PDFExtractor:
             img_list.extend(page_content.get_images())
         
         if len(img_list)==0:
-            raise ValueError(f'No images found in {self.pdf_data}')
+            raise ValueError(f'No images found in {self.pdfFile}')
         
         for i, img in enumerate(img_list, start=1):
             xref = img[0]
@@ -36,3 +63,5 @@ class PDFExtractor:
             with open(os.path.join(image_name) , 'wb') as image_file:
                 image_file.write(image_bytes)
                 image_file.close()
+        
+        return True
