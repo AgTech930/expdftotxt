@@ -36,7 +36,7 @@ This package empowers users with a straightforward and reliable method to extrac
 
 ## 1. InvoiceExtractor methods :
 **openai_extract_data()** 'This method extracts text from a Invoice Pdf'
-**Parameters:**
+- **Parameters:**
 - temperature (float, optional): The temperature parameter for the OpenAI LLM.
 - api_key (str, optional): The API key for accessing OpenAI services. 
                 Note: "If the default API key is not functioning, please provide an alternative API key for use."  
