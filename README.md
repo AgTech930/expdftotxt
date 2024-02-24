@@ -12,21 +12,21 @@ This package empowers users with a straightforward and reliable method to extrac
 
 ### Code: 
 ```python
-        from expdf2txt.invoice2text import InvoiceExtractor
-        FILEPATH = "invoice_2001321.pdf"
-        invocie_extractor = InvoiceExtractor(FILEPATH)
-        data = invocie_extractor.openai_extract_data(format_data=True)
-        print(data)
+from expdf2txt.invoice2text import InvoiceExtractor
+FILEPATH = "invoice_2001321.pdf"
+invocie_extractor = InvoiceExtractor(FILEPATH)
+data = invocie_extractor.openai_extract_data(format_data=True)
+print(data)
 ```
 
 ## 2. ImageExtractor (extract image from pdf)
 
 ### Code:   
 ```python
-        from expdf2txt.pdf2data import PDFExtractor
-        FILEPATH = "invoice_2001321.pdf"
-        pdf_obj = PDFExtractor(FILEPATH)
-        pdf_obj.extract_image()
+from expdf2txt.pdf2data import PDFExtractor
+FILEPATH = "invoice_2001321.pdf"
+pdf_obj = PDFExtractor(FILEPATH)
+pdf_obj.extract_image()
 ```
 
 
@@ -37,11 +37,11 @@ This package empowers users with a straightforward and reliable method to extrac
 ## 1. InvoiceExtractor methods :
 **openai_extract_data()** 'This method extracts text from a Invoice Pdf'
 - **Parameters:**
-- - ***temperature (float, optional):*** The temperature parameter for the OpenAI LLM.
-- - ***api_key (str, optional):*** The API key for accessing OpenAI services. 
+ - ***temperature (float, optional):*** The temperature parameter for the OpenAI LLM.
+ - ***api_key (str, optional):*** The API key for accessing OpenAI services. 
                 Note: "If the default API key is not functioning, please provide an alternative API key for use."  
-- - ***template (str, optional):*** Custom template string for document extraction.
-- - ***format_data (bool, optional):*** If True, format the extracted data into a dictionary or list; if False, return raw output.
+ - ***template (str, optional):*** Custom template string for document extraction.
+ - ***format_data (bool, optional):*** If True, format the extracted data into a dictionary or list; if False, return raw output.
                 Note: "If the data is successfully converted into a dictionary, it will be returned as a dictionary. Otherwise, it will be returned as a list."
 
 ## 2. PDFExtractor methods:
