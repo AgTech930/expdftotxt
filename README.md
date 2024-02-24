@@ -1,44 +1,41 @@
 # EXPDF2TXT
 
-## Overview
+## 🤔 Overview
 
 The expdf2txt is a versatile and efficient package designed for seamless conversion of PDF (Portable Document Format) files into TXT (Plain Text) format.
 This package empowers users with a straightforward and reliable method to extract textual content from PDF documents, making it easily accessible and editable."
 
-## Usage
-### Example
 
+# ❓ Features
+
+## 1. InvoiceExtractor (Convert Invoice Pdf to Text)
+
+### Code: 
+        ```python
+        from expdf2txt.invoice2text import InvoiceExtractor
+        FILEPATH = "invoice_2001321.pdf"
+        invocie_extractor = InvoiceExtractor(FILEPATH)
+        data = invocie_extractor.openai_extract_data(format_data=True)
+        print(data)
+        ```
+
+## 2. ImageExtractor (extract image from pdf)
+
+### Code:   
 ```python
-from expdf2txt.invoice2text import InvoiceExtractor
-FILEPATH = "invoice_2001321.pdf"
-invocie_extractor = InvoiceExtractor(FILEPATH)
-data = invocie_extractor.openai_extract_data(format_data=True)
-print(data)
-
-#Features
-
-1. InvoiceExtractor (Convert Invoice Pdf to Text)
-        Code: 
-                from expdf2txt.invoice2text import InvoiceExtractor
-                FILEPATH = "invoice_2001321.pdf"
-                invocie_extractor = InvoiceExtractor(FILEPATH)
-                data = invocie_extractor.openai_extract_data(format_data=True)
-                print(data)
-
-2. ImageExtractor (extract image from pdf)
-        Code:
-                from expdf2txt.pdf2data import PDFExtractor
-                FILEPATH = "invoice_2001321.pdf"
-                pdf_obj = PDFExtractor(FILEPATH)
-                pdf_obj.extract_image()
+        from expdf2txt.pdf2data import PDFExtractor
+        FILEPATH = "invoice_2001321.pdf"
+        pdf_obj = PDFExtractor(FILEPATH)
+        pdf_obj.extract_image()
+```
 
 
-New Features Comming Soon...
+# New Features Comming Soon...
 
 
-#Methods
+# 🚀 Methods
 
-1. InvoiceExtractor methods :
+## 1. InvoiceExtractor methods :
                 -> openai_extract_data() 'This method extracts text from a Invoice Pdf'
                         Parameters:
                         - temperature (float, optional): The temperature parameter for the OpenAI LLM.
@@ -48,7 +45,7 @@ New Features Comming Soon...
                         - format_data (bool, optional): If True, format the extracted data into a dictionary or list; if False, return raw output.
                                 Note: "If the data is successfully converted into a dictionary, it will be returned as a dictionary. Otherwise, it will be returned as a list."
 
-2. PDFExtractor methods:
+## 2. PDFExtractor methods:
                 -> countpages() 'Count the number of pages in the document.'
                 -> extract_string() 'Extract the data from the source.'
                 -> extract_image() 'Extract images from the PDF document and saves them as separate files.'
@@ -56,10 +53,10 @@ New Features Comming Soon...
 
 # Dependencies
 
-openai
-pytesseract
-PyPDF2
-PyMuPDF
+**openai**
+**pytesseract**
+**PyPDF2**
+**PyMuPDF**
 
 # License
 
