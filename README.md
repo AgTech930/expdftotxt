@@ -37,11 +37,11 @@ pdf_obj.extract_image()
 ## 1. InvoiceExtractor methods :
 **openai_extract_data()** 'This method extracts text from a Invoice Pdf'
 - **Parameters:**
- - ***temperature (float, optional):*** The temperature parameter for the OpenAI LLM.
- - ***api_key (str, optional):*** The API key for accessing OpenAI services. 
+ 1. ***temperature (float, optional):*** The temperature parameter for the OpenAI LLM.
+ 2. ***api_key (str, optional):*** The API key for accessing OpenAI services. 
                 Note: "If the default API key is not functioning, please provide an alternative API key for use."  
- - ***template (str, optional):*** Custom template string for document extraction.
- - ***format_data (bool, optional):*** If True, format the extracted data into a dictionary or list; if False, return raw output.
+ 3. ***template (str, optional):*** Custom template string for document extraction.
+ 4. ***format_data (bool, optional):*** If True, format the extracted data into a dictionary or list; if False, return raw output.
                 Note: "If the data is successfully converted into a dictionary, it will be returned as a dictionary. Otherwise, it will be returned as a list."
 
 ## 2. PDFExtractor methods:
