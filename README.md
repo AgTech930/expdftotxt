@@ -5,6 +5,13 @@
 The expdf2txt is a versatile and efficient package designed for seamless conversion of PDF (Portable Document Format) files into TXT (Plain Text) format.
 This package empowers users with a straightforward and reliable method to extract textual content from PDF documents, making it easily accessible and editable."
 
+## Quick Install
+
+With pip:
+```bash
+pip install expdf2txt
+```
+
 
 # ❓ Features
 
