@@ -5,6 +5,13 @@
 The expdf2txt is a versatile and efficient package designed for seamless conversion of PDF (Portable Document Format) files into TXT (Plain Text) format.
 This package empowers users with a straightforward and reliable method to extract textual content from PDF documents, making it easily accessible and editable."
 
+## Quick Install
+
+With pip:
+```bash
+pip install expdf2txt
+```
+
 
 # ❓ Features
 
@@ -12,7 +19,7 @@ This package empowers users with a straightforward and reliable method to extrac
 
 ### Code: 
 ```python
-from expdf2txt.invoice2text import InvoiceExtractor
+from expdf2txt.invoice2data import InvoiceExtractor
 FILEPATH = "invoice_2001321.pdf"
 invocie_extractor = InvoiceExtractor(FILEPATH)
 data = invocie_extractor.openai_extract_data(format_data=True)

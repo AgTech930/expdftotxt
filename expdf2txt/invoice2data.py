@@ -72,13 +72,13 @@ class InvoiceExtractor(Base):
             if not api_key:
                 raise ValueError("API key not found. Please provide an API key.")
             client = OpenAI(api_key=api_key)
-            temperature = temperature
             document = self.extract_document()
             template = self._template(template,document)
             max_tokens = 3000
             response = client.completions.create(
                                                 model="gpt-3.5-turbo-instruct",
-                                                max_tokens=max_tokens
+                                                max_tokens=max_tokens,
+                                                prompt=template,
                                                 )
             final_data = self.data_format(response.choices[0].text) if format_data else response.choices[0].text
             return final_data
