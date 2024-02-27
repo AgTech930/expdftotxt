@@ -1,6 +1,7 @@
 from .base import Base
 import fitz
 import os
+import re
 
 class PDFExtractor(Base):
     def __init__(self,pdfFile):
@@ -56,7 +57,6 @@ class PDFExtractor(Base):
         for i, img in enumerate(img_list, start=1):
             xref = img[0]
             base_image = pdf_file.extract_image(xref)
-            #Store image bytes
             image_bytes = base_image['image']
             image_ext = base_image['ext']
             image_name = str(i) + '.' + image_ext
@@ -65,3 +65,17 @@ class PDFExtractor(Base):
                 image_file.close()
         
         return True
+    
+    def extract_links(self):
+        """
+        Extract links from PDF document.
+
+        This method extract links from each page of the PDF document.
+
+        Returns:
+            list: List of links.
+        """
+        string_data = self.extract_string()
+        pattern = r'(?:https?://|www\.)\S+\.+[a-z]{2,3}'
+        links = re.findall(pattern,string_data)
+        return links
